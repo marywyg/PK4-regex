@@ -4,7 +4,7 @@
 bool isEmailValid(const std::string& email) {
 
 	std::regex email_regex(
-		R"(^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$)"
+		R"(^[a-zA-Z0-9._]+@[a-zA-Z.-]+\.[a-zA-Z]{2,3}$)"
 	);
 
 	return std::regex_match(email, email_regex);
