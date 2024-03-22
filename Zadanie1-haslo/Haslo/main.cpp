@@ -7,9 +7,8 @@ bool isPasswordValid(const std::string& password) {
 	    }
 	    std::regex upper_case("[A-Z]");
 	    std::regex lower_case("[a-z]");
-	    std::regex digit(R"(\d{2,})");
+	    std::regex digit("\\d{2,}");
 	    std::regex special_char("[^a-zA-Z0-9]");
-	
 	    if (std::regex_search(password, upper_case) &&
 	        std::regex_search(password, lower_case) &&
 	        std::regex_search(password, digit) &&
