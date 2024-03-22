@@ -1,19 +1,23 @@
 #include<iostream>
 #include<fstream>
 #include <regex>
-
-
 int main() {
     std::ifstream file("PAN-TADEUSZ.txt");
+    if (file.is_open()) {
+        std::cout << "Plik PAN-TADEUSZ.txt wczytano pomyslnie." << std::endl;
+    }
+    else {
+        std::cout << "Blad! Plik PAN-TADEUSZ.txt nie zostal wczytany." << std::endl;
+        return 0;
+    }
     std::string line;
-    std::regex soplica_regex(R"(Soplica\b)");
-    std::regex zosia_regex(R"(\bZosia\b)");
+    std::regex soplica_regex("Soplica\\b");
+    std::regex zosia_regex("\\bZosia\\b");
     int soplica_count = 0;
     int zosia_count = 0;
     std::string zosia_line;
     std::cout << "Linie ze slowem Soplica: " << std::endl;
     while (std::getline(file, line)) {
-
         if (std::regex_search(line, soplica_regex)) {
             soplica_count++;
             if (soplica_count <= 20) {
@@ -33,6 +37,5 @@ int main() {
     if (!zosia_line.empty()) {
         std::cout << "Linia z 23-cim wystapieniem slowa Zosia: " << zosia_line << std::endl;
     }
-
     return 0;
 }
